@@ -45,4 +45,14 @@ umeng.properties说明
     UmengProxy umengProxy = new UmengProxy();
     umengProxy.pushMg(umengcast);
     
-3.`mvn package`.
+如何获取
+-------
+1.maven
+
+	<dependency>
+	    <groupId>com.foxinmy</groupId>
+	    <artifactId>umeng4j</artifactId>
+	    <version>1.0</version>
+	</dependency>
+	
+2.git clone & mvn package.
