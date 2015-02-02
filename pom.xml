@@ -313,17 +313,13 @@
 		</profile>
 	</profiles>
 	<distributionManagement>
-		<repository>
-			<id>releases</id>
-			<name>Internal Releases</name>
-			<url>http://42.62.64.62:8081/nexus/content/repositories/releases/
-			</url>
-		</repository>
 		<snapshotRepository>
-			<id>snapshots</id>
-			<name>Internal Snapshots</name>
-			<url>http://42.62.64.62:8081/nexus/content/repositories/snapshots/
-			</url>
+			<id>oss-snapshot</id>
+			<url>https://oss.sonatype.org/content/repositories/snapshots/</url>
 		</snapshotRepository>
+		<repository>
+			<id>oss-release</id>
+			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+		</repository>
 	</distributionManagement>
 </project>
