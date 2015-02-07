@@ -3,7 +3,6 @@ package com.foxinmy.umeng4j.http;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 
-import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.http.Consts;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpHeaders;
@@ -24,6 +23,7 @@ import org.apache.http.params.CoreProtocolPNames;
 import org.apache.http.util.EntityUtils;
 
 import com.foxinmy.umeng4j.exception.UmengException;
+import com.foxinmy.umeng4j.util.StringUtil;
 
 /**
  * 
@@ -70,7 +70,7 @@ public class HttpRequest {
 
 	public Response post(String url, String body, String appMasterSecret)
 			throws UmengException {
-		String sign = DigestUtils.md5Hex(String.format("POST%s%s%s", url, body,
+		String sign = StringUtil.getMD5(String.format("POST%s%s%s", url, body,
 				appMasterSecret));
 		HttpPost method = new HttpPost(String.format("%s?sign=%s", url, sign));
 		method.setEntity(new StringEntity(body, ContentType.create(

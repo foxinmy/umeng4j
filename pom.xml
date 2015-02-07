@@ -43,16 +43,9 @@
 		<jdk.version>1.7</jdk.version>
 		<junit.version>4.8.2</junit.version>
 		<dom4j.version>1.6.1</dom4j.version>
-		<logback.version>1.0.9</logback.version>
-		<jcl.over.version>1.7.6</jcl.over.version>
-		<log4j.over.version>1.7.6</log4j.over.version>
-		<xstream.version>1.4.7</xstream.version>
 		<httpclient.version>4.2.5</httpclient.version>
-		<commons.codec.version>1.9</commons.codec.version>
 		<fastjson.version>1.2.3</fastjson.version>
 		<jaxen.version>1.1.6</jaxen.version>
-		<jedis.version>2.6.0</jedis.version>
-		<commons.lang.version>3.3.2</commons.lang.version>
 		<slf4j.api.version>1.7.10</slf4j.api.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.source.plugin.version>2.4</maven.source.plugin.version>
@@ -220,11 +213,6 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-			<groupId>com.thoughtworks.xstream</groupId>
-			<artifactId>xstream</artifactId>
-			<version>${xstream.version}</version>
-		</dependency>
-		<dependency>
 			<groupId>org.apache.httpcomponents</groupId>
 			<artifactId>httpcore</artifactId>
 			<version>${httpclient.version}</version>
@@ -245,22 +233,6 @@
 			</exclusions>
 		</dependency>
 		<dependency>
-			<groupId>org.apache.httpcomponents</groupId>
-			<artifactId>httpmime</artifactId>
-			<version>${httpclient.version}</version>
-			<exclusions>
-				<exclusion>
-					<groupId>org.apache.httpcomponents</groupId>
-					<artifactId>httpcore</artifactId>
-				</exclusion>
-			</exclusions>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.commons</groupId>
-			<artifactId>commons-lang3</artifactId>
-			<version>${commons.lang.version}</version>
-		</dependency>
-		<dependency>
 			<groupId>com.alibaba</groupId>
 			<artifactId>fastjson</artifactId>
 			<version>${fastjson.version}</version>
@@ -269,16 +241,6 @@
 			<groupId>dom4j</groupId>
 			<artifactId>dom4j</artifactId>
 			<version>${dom4j.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>redis.clients</groupId>
-			<artifactId>jedis</artifactId>
-			<version>${jedis.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>commons-codec</groupId>
-			<artifactId>commons-codec</artifactId>
-			<version>${commons.codec.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.slf4j</groupId>
