@@ -23,6 +23,7 @@ import org.apache.http.params.CoreProtocolPNames;
 import org.apache.http.util.EntityUtils;
 
 import com.foxinmy.umeng4j.exception.UmengException;
+import com.foxinmy.umeng4j.util.ErrorUtil;
 import com.foxinmy.umeng4j.util.StringUtil;
 
 /**
@@ -97,10 +98,8 @@ public class HttpRequest {
 			if (status != HttpStatus.SC_OK
 					|| !result.getRet().equals(
 							com.foxinmy.umeng4j.type.Consts.SUCCESS)) {
-				int code = result.getData()
-						.getIntValue("error_code");
-				throw new UmengException(Integer.toString(code),
-						response.getTextError(code));
+				String code = result.getData().getString("error_code");
+				throw new UmengException(code, ErrorUtil.getText(code));
 			}
 		} catch (IOException e) {
 			throw new UmengException(e.getMessage());

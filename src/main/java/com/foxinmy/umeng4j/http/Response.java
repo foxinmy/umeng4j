@@ -1,12 +1,6 @@
 package com.foxinmy.umeng4j.http;
 
-import java.io.IOException;
 import java.io.InputStream;
-
-import org.dom4j.Document;
-import org.dom4j.DocumentException;
-import org.dom4j.Node;
-import org.dom4j.io.SAXReader;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
@@ -40,42 +34,6 @@ public class Response {
 
 	public <T> T getAsObject(Class<T> clazz) {
 		return getAsJson().getObject("data", clazz);
-	}
-
-	/**
-	 * <a href= "http://dev.umeng.com/push/android/api-doc#4_8">错误码</a>
-	 * 
-	 * @return
-	 * @throws DocumentException
-	 */
-	public String getTextError(int code) {
-		String text = "unknown error";
-		InputStream is = null;
-		SAXReader reader = new SAXReader();
-		Document doc = null;
-		try {
-			is = Response.class.getResourceAsStream("error.xml");
-			doc = reader.read(is);
-			Node node = doc.getRootElement().selectSingleNode(
-					String.format("error/code[text()=%d]", code));
-			if (node != null) {
-				Node _node = node.getParent().selectSingleNode("text");
-				if (_node != null) {
-					text = _node.getStringValue();
-				}
-			}
-		} catch (DocumentException e) {
-			; // ignore
-		} finally {
-			if (is != null) {
-				try {
-					is.close();
-				} catch (IOException e) {
-					;
-				}
-			}
-		}
-		return text;
 	}
 
 	public void setText(String text) {

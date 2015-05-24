@@ -30,10 +30,10 @@ public class TaskStatus implements Serializable {
 	@JSONField(name = "accept_count")
 	private int acceptCount; // 消息受理数
 	/**
-	 * Android:<br/>
+	 * Android:</br>
 	 * sent_count表示消息送达设备的数量。由于设备可能不在线，在消息有效时间内(expire_time)，设备上线后还会收到消息。
-	 * 所以"sent_count"的数字会一直增加，直至到达消息过期时间后，该值不再变化。<br/>
-	 * iOS: <br/>
+	 * 所以"sent_count"的数字会一直增加，直至到达消息过期时间后，该值不再变化。</br>
+	 * iOS: </br>
 	 * sent_count表示友盟成功推送到APNs平台的数字
 	 * ，不代表送达设备的个数。友盟将消息发送到APNs服务器之后，如果APNs没有返回错误，友盟认为发送成功
 	 * 。因此accept_count会和sent_count两个数字一样。

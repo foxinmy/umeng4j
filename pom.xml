@@ -40,39 +40,23 @@
 		</developer>
 	</developers>
 	<properties>
-		<jdk.version>1.7</jdk.version>
-		<junit.version>4.8.2</junit.version>
-		<dom4j.version>1.6.1</dom4j.version>
-		<httpclient.version>4.2.5</httpclient.version>
-		<fastjson.version>1.2.3</fastjson.version>
-		<jaxen.version>1.1.6</jaxen.version>
-		<slf4j.api.version>1.7.10</slf4j.api.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<maven.source.plugin.version>2.4</maven.source.plugin.version>
-		<maven.compiler.plugin.version>3.0</maven.compiler.plugin.version>
-		<maven.resources.plugin.version>2.6</maven.resources.plugin.version>
-		<maven.jar.plugin.version>2.5</maven.jar.plugin.version>
-		<maven.assembly.plugin.version>2.5.1</maven.assembly.plugin.version>
-		<maven.javadoc.plugin.version>2.10.1</maven.javadoc.plugin.version>
-		<maven.deploy.plugin.version>2.8.2</maven.deploy.plugin.version>
-		<maven.gpg.plugin.version>1.5</maven.gpg.plugin.version>
-		<maven.surefire.plugin.version>2.18</maven.surefire.plugin.version>
 	</properties>
 	<build>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>${maven.compiler.plugin.version}</version>
+				<version>3.0</version>
 				<configuration>
-					<source>${jdk.version}</source>
-					<target>${jdk.version}</target>
+					<source>1.7</source>
+					<target>1.7</target>
 				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-resources-plugin</artifactId>
-				<version>${maven.resources.plugin.version}</version>
+				<version>2.6</version>
 				<configuration>
 					<encoding>${project.build.sourceEncoding}</encoding>
 				</configuration>
@@ -80,7 +64,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-jar-plugin</artifactId>
-				<version>${maven.jar.plugin.version}</version>
+				<version>2.5</version>
 				<executions>
 					<execution>
 						<id>default-jar</id>
@@ -109,7 +93,7 @@
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-assembly-plugin</artifactId>
-					<version>${maven.assembly.plugin.version}</version>
+					<version>2.5.1</version>
 					<configuration>
 						<descriptors>
 							<descriptor>src/main/assembly.xml</descriptor>
@@ -128,7 +112,7 @@
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-source-plugin</artifactId>
-					<version>${maven.source.plugin.version}</version>
+					<version>2.4</version>
 					<executions>
 						<execution>
 							<id>attach-sources</id>
@@ -141,7 +125,7 @@
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-javadoc-plugin</artifactId>
-					<version>${maven.javadoc.plugin.version}</version>
+					<version>2.10.1</version>
 					<executions>
 						<execution>
 							<id>attach-javadocs</id>
@@ -163,12 +147,12 @@
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-deploy-plugin</artifactId>
-					<version>${maven.deploy.plugin.version}</version>
+					<version>2.8.2</version>
 				</plugin>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-gpg-plugin</artifactId>
-					<version>${maven.gpg.plugin.version}</version>
+					<version>1.5</version>
 					<executions>
 						<execution>
 							<phase>verify</phase>
@@ -181,7 +165,7 @@
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-surefire-plugin</artifactId>
-					<version>${maven.surefire.plugin.version}</version>
+					<version>2.18</version>
 					<configuration>
 						<skipTests>true</skipTests>
 					</configuration>
@@ -209,18 +193,18 @@
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>${junit.version}</version>
+			<version>4.8.2</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.httpcomponents</groupId>
 			<artifactId>httpcore</artifactId>
-			<version>${httpclient.version}</version>
+			<version>4.2.5</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.httpcomponents</groupId>
 			<artifactId>httpclient</artifactId>
-			<version>${httpclient.version}</version>
+			<version>4.2.5</version>
 			<exclusions>
 				<exclusion>
 					<groupId>commons-codec</groupId>
@@ -235,22 +219,7 @@
 		<dependency>
 			<groupId>com.alibaba</groupId>
 			<artifactId>fastjson</artifactId>
-			<version>${fastjson.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>dom4j</groupId>
-			<artifactId>dom4j</artifactId>
-			<version>${dom4j.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-api</artifactId>
-			<version>${slf4j.api.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>jaxen</groupId>
-			<artifactId>jaxen</artifactId>
-			<version>${jaxen.version}</version>
+			<version>1.2.3</version>
 		</dependency>
 	</dependencies>
 	<profiles>

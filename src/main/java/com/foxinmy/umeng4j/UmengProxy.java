@@ -106,7 +106,7 @@ public class UmengProxy {
 	/**
 	 * 文件上传,文件上传接口支持两种应用场景:
 	 * 
-	 * a. 发送类型为"filecast"的时候, 开发者批量上传device_token;<br/>
+	 * a. 发送类型为"filecast"的时候, 开发者批量上传device_token;</br>
 	 * b. 发送类型为"customizedcast"时, 开发者批量上传alias。 上传文件后获取file_id,
 	 * 从而可以实现通过文件id来进行消息批量推送的目的。 文件自创建起，服务器会保存两个月。开发者可以在有效期内重复使用该file-id进行消息发送。
 	 * <font color="red">注意: 上传的文件不超过10M.</font>
