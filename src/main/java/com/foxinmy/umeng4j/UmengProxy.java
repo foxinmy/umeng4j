@@ -1,15 +1,24 @@
 package com.foxinmy.umeng4j;
 
+import java.io.IOException;
+import java.nio.charset.Charset;
+
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.foxinmy.umeng4j.cast.UmengCast;
 import com.foxinmy.umeng4j.exception.UmengException;
-import com.foxinmy.umeng4j.http.ApiResult;
-import com.foxinmy.umeng4j.http.HttpRequest;
-import com.foxinmy.umeng4j.http.Response;
 import com.foxinmy.umeng4j.model.TaskStatus;
 import com.foxinmy.umeng4j.type.Consts;
+import com.foxinmy.umeng4j.util.ErrorUtil;
+import com.foxinmy.umeng4j.util.StringUtil;
 import com.foxinmy.umeng4j.util.UMConfigUtil;
+import com.foxinmy.weixin4j.http.ContentType;
+import com.foxinmy.weixin4j.http.HttpClient;
+import com.foxinmy.weixin4j.http.HttpPost;
+import com.foxinmy.weixin4j.http.HttpResponse;
+import com.foxinmy.weixin4j.http.HttpStatus;
+import com.foxinmy.weixin4j.http.SimpleHttpClient;
+import com.foxinmy.weixin4j.http.entity.StringEntity;
 
 /**
  * 友盟消息接口实现
@@ -22,7 +31,7 @@ import com.foxinmy.umeng4j.util.UMConfigUtil;
  */
 public class UmengProxy {
 
-	private final HttpRequest request = new HttpRequest();
+	private final HttpClient httpClient = new SimpleHttpClient();
 	private final String masterSecret;
 	private final String appKey;
 
@@ -53,9 +62,10 @@ public class UmengProxy {
 	 */
 	public ApiResult pushMsg(UmengCast umengCast) throws UmengException {
 		umengCast.setAppkey(appKey);
-		Response response = request.post(Consts.UMENG_MSG_PUSH_URL,
-				JSON.toJSONString(umengCast), masterSecret);
-		return response.getAsResult();
+
+		JSONObject response = execute(Consts.UMENG_MSG_PUSH_URL,
+				JSON.toJSONString(umengCast));
+		return JSON.toJavaObject(response, ApiResult.class);
 	}
 
 	/**
@@ -76,9 +86,9 @@ public class UmengProxy {
 		para.put("appkey", appKey);
 		para.put("timestamp", System.currentTimeMillis());
 		para.put("task_id", taskId);
-		Response response = request.post(Consts.UMENG_MSG_STATUS_URL,
-				para.toJSONString(), masterSecret);
-		return response.getAsObject(TaskStatus.class);
+		JSONObject response = execute(Consts.UMENG_MSG_STATUS_URL,
+				para.toJSONString());
+		return JSON.toJavaObject(response, TaskStatus.class);
 	}
 
 	/**
@@ -98,16 +108,16 @@ public class UmengProxy {
 		para.put("appkey", appKey);
 		para.put("timestamp", System.currentTimeMillis());
 		para.put("task_id", taskId);
-		Response response = request.post(Consts.UMENG_MSG_CANCEL_URL,
-				para.toJSONString(), masterSecret);
-		return response.getAsResult();
+		JSONObject response = execute(Consts.UMENG_MSG_CANCEL_URL,
+				para.toJSONString());
+		return JSON.toJavaObject(response, ApiResult.class);
 	}
 
 	/**
 	 * 文件上传,文件上传接口支持两种应用场景:
 	 * 
-	 * a. 发送类型为"filecast"的时候, 开发者批量上传device_token;</br>
-	 * b. 发送类型为"customizedcast"时, 开发者批量上传alias。 上传文件后获取file_id,
+	 * a. 发送类型为"filecast"的时候, 开发者批量上传device_token;</br> b.
+	 * 发送类型为"customizedcast"时, 开发者批量上传alias。 上传文件后获取file_id,
 	 * 从而可以实现通过文件id来进行消息批量推送的目的。 文件自创建起，服务器会保存两个月。开发者可以在有效期内重复使用该file-id进行消息发送。
 	 * <font color="red">注意: 上传的文件不超过10M.</font>
 	 * 
@@ -124,8 +134,31 @@ public class UmengProxy {
 		para.put("appkey", appKey);
 		para.put("timestamp", System.currentTimeMillis());
 		para.put("content", content);
-		Response response = request.post(Consts.UMENG_MSG_UPLOAD_URL,
-				para.toJSONString(), masterSecret);
-		return response.getAsResult();
+		JSONObject response = execute(Consts.UMENG_MSG_UPLOAD_URL,
+				para.toJSONString());
+		return JSON.toJavaObject(response, ApiResult.class);
+	}
+
+	private JSONObject execute(String url, String body) throws UmengException {
+		String sign = StringUtil.getMD5(String.format("POST%s%s%s", url, body,
+				masterSecret));
+		HttpPost request = new HttpPost(String.format("%s?sign=%s", url, sign));
+		request.setEntity(new StringEntity(body, ContentType.APPLICATION_JSON));
+		try {
+			HttpResponse response = httpClient.execute(request);
+			byte[] bytes = response.getContent();
+			JSONObject result = JSON.parseObject(bytes, 0, bytes.length,
+					Charset.forName("UTF-8").newDecoder(), JSONObject.class);
+			if (response.getStatusLine().getStatusCode() != HttpStatus.SC_OK
+					|| !result.getString("ret").equals(
+							com.foxinmy.umeng4j.type.Consts.SUCCESS)) {
+				String code = result.getJSONObject("data").getString(
+						"error_code");
+				throw new UmengException(code, ErrorUtil.getText(code));
+			}
+			return result;
+		} catch (IOException e) {
+			throw new UmengException(e.getMessage());
+		}
 	}
 }

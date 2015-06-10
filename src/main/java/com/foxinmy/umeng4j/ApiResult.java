@@ -1,4 +1,4 @@
-package com.foxinmy.umeng4j.http;
+package com.foxinmy.umeng4j;
 
 import java.io.Serializable;
 

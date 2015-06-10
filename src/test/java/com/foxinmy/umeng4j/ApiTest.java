@@ -3,7 +3,6 @@ package com.foxinmy.umeng4j;
 import org.junit.Test;
 
 import com.foxinmy.umeng4j.exception.UmengException;
-import com.foxinmy.umeng4j.http.ApiResult;
 import com.foxinmy.umeng4j.model.FilterCriteria;
 import com.foxinmy.umeng4j.model.TaskStatus;
 import com.foxinmy.umeng4j.type.FilterType;
