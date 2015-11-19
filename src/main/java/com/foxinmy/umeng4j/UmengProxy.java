@@ -1,6 +1,5 @@
 package com.foxinmy.umeng4j;
 
-import java.io.IOException;
 import java.nio.charset.Charset;
 
 import com.alibaba.fastjson.JSON;
@@ -14,7 +13,9 @@ import com.foxinmy.umeng4j.util.StringUtil;
 import com.foxinmy.umeng4j.util.UMConfigUtil;
 import com.foxinmy.weixin4j.http.ContentType;
 import com.foxinmy.weixin4j.http.HttpClient;
-import com.foxinmy.weixin4j.http.HttpPost;
+import com.foxinmy.weixin4j.http.HttpClientException;
+import com.foxinmy.weixin4j.http.HttpMethod;
+import com.foxinmy.weixin4j.http.HttpRequest;
 import com.foxinmy.weixin4j.http.HttpResponse;
 import com.foxinmy.weixin4j.http.HttpStatus;
 import com.foxinmy.weixin4j.http.SimpleHttpClient;
@@ -142,14 +143,15 @@ public class UmengProxy {
 	private JSONObject execute(String url, String body) throws UmengException {
 		String sign = StringUtil.getMD5(String.format("POST%s%s%s", url, body,
 				masterSecret));
-		HttpPost request = new HttpPost(String.format("%s?sign=%s", url, sign));
+		HttpRequest request = new HttpRequest(HttpMethod.POST, String.format(
+				"%s?sign=%s", url, sign));
 		request.setEntity(new StringEntity(body, ContentType.APPLICATION_JSON));
 		try {
 			HttpResponse response = httpClient.execute(request);
 			byte[] bytes = response.getContent();
 			JSONObject result = JSON.parseObject(bytes, 0, bytes.length,
 					Charset.forName("UTF-8").newDecoder(), JSONObject.class);
-			if (response.getStatusLine().getStatusCode() != HttpStatus.SC_OK
+			if (response.getStatus().getStatusCode() != HttpStatus.SC_OK
 					|| !result.getString("ret").equals(
 							com.foxinmy.umeng4j.type.Consts.SUCCESS)) {
 				String code = result.getJSONObject("data").getString(
@@ -157,7 +159,7 @@ public class UmengProxy {
 				throw new UmengException(code, ErrorUtil.getText(code));
 			}
 			return result;
-		} catch (IOException e) {
+		} catch (HttpClientException e) {
 			throw new UmengException(e.getMessage());
 		}
 	}
