@@ -18,8 +18,8 @@ import com.foxinmy.weixin4j.http.HttpMethod;
 import com.foxinmy.weixin4j.http.HttpRequest;
 import com.foxinmy.weixin4j.http.HttpResponse;
 import com.foxinmy.weixin4j.http.HttpStatus;
-import com.foxinmy.weixin4j.http.SimpleHttpClient;
 import com.foxinmy.weixin4j.http.entity.StringEntity;
+import com.foxinmy.weixin4j.http.factory.HttpClientFactory;
 
 /**
  * 友盟消息接口实现
@@ -32,18 +32,19 @@ import com.foxinmy.weixin4j.http.entity.StringEntity;
  */
 public class UmengProxy {
 
-	private final HttpClient httpClient = new SimpleHttpClient();
+	private final HttpClient httpClient;
 	private final String masterSecret;
 	private final String appKey;
 
 	public UmengProxy() {
-		this.appKey = UMConfigUtil.getValue("app_key");
-		this.masterSecret = UMConfigUtil.getValue("master_secret");
+		this(UMConfigUtil.getValue("app_key"), UMConfigUtil
+				.getValue("master_secret"));
 	}
 
 	public UmengProxy(String appkey, String masterSecret) {
 		this.appKey = appkey;
 		this.masterSecret = masterSecret;
+		this.httpClient = HttpClientFactory.getInstance();
 	}
 
 	/**
