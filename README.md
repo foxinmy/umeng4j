@@ -31,9 +31,9 @@ umeng4j
 
 如何使用
 --------
-1.接口的正确调用需要将`umeng.properties`文件复制到项目的`classpath`中
+1.接口的正确调用需要将`umeng4j.properties`文件复制到项目的`classpath`中
 
-umeng.properties说明
+umeng4j.properties说明
 
 | 属性名       |       说明      |
 | :---------- | :-------------- |
@@ -52,7 +52,7 @@ umeng.properties说明
 	<dependency>
 	    <groupId>com.foxinmy</groupId>
 	    <artifactId>umeng4j</artifactId>
-	    <version>1.0</version>
+	    <version>1.1.0</version>
 	</dependency>
 	
 2.git clone & mvn package.

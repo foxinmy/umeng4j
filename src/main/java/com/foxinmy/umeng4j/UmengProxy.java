@@ -10,7 +10,7 @@ import com.foxinmy.umeng4j.model.TaskStatus;
 import com.foxinmy.umeng4j.type.Consts;
 import com.foxinmy.umeng4j.util.ErrorUtil;
 import com.foxinmy.umeng4j.util.StringUtil;
-import com.foxinmy.umeng4j.util.UMConfigUtil;
+import com.foxinmy.umeng4j.util.Umeng4jConfigUtil;
 import com.foxinmy.weixin4j.http.ContentType;
 import com.foxinmy.weixin4j.http.HttpClient;
 import com.foxinmy.weixin4j.http.HttpClientException;
@@ -37,8 +37,8 @@ public class UmengProxy {
 	private final String appKey;
 
 	public UmengProxy() {
-		this(UMConfigUtil.getValue("app_key"), UMConfigUtil
-				.getValue("master_secret"));
+		this(Umeng4jConfigUtil.getValue("umeng4j.app.key"), Umeng4jConfigUtil
+				.getValue("umeng4j.app.master.secret"));
 	}
 
 	public UmengProxy(String appkey, String masterSecret) {
