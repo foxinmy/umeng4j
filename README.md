@@ -37,8 +37,8 @@ umeng4j.properties说明
 
 | 属性名       |       说明      |
 | :---------- | :-------------- |
-| app_key     | 应用唯一标识 |
-| master_secret  | 服务器秘钥,用于服务器端调用API请求时对发送内容做签名验证 |
+| umeng4j.app.key     | 应用唯一标识 |
+| umeng4j.app.master.secret  | 服务器秘钥,用于服务器端调用API请求时对发送内容做签名验证 |
 
 2.实例化一个`UmengProxy`对象,调用API.
 
