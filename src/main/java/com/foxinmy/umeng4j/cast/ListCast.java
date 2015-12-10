@@ -3,7 +3,7 @@ package com.foxinmy.umeng4j.cast;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.foxinmy.umeng4j.payload.Payload;
 import com.foxinmy.umeng4j.type.CastType;
-import com.foxinmy.umeng4j.util.MapUtil;
+import com.foxinmy.umeng4j.util.UmengStringUtil;
 
 /**
  * 列播
@@ -21,7 +21,7 @@ public class ListCast extends UmengCast {
 
 	public ListCast(Payload payload, String... deviceTokens) {
 		super(CastType.LISTCAST, payload);
-		this.deviceTokens = MapUtil.concatComma(deviceTokens);
+		this.deviceTokens = UmengStringUtil.concatComma(deviceTokens);
 	}
 
 	public String getDeviceTokens() {

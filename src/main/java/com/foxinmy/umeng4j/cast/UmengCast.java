@@ -4,7 +4,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.foxinmy.umeng4j.payload.Payload;
 import com.foxinmy.umeng4j.type.CastType;
-import com.foxinmy.umeng4j.util.MapUtil;
+import com.foxinmy.umeng4j.util.UmengStringUtil;
 
 /**
  * 友盟消息
@@ -92,7 +92,7 @@ public abstract class UmengCast {
 	}
 
 	public void setAlias(String... alias) {
-		this.alias = MapUtil.concatComma(alias);
+		this.alias = UmengStringUtil.concatComma(alias);
 	}
 
 	public JSONObject getFilter() {

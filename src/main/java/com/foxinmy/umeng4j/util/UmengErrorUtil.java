@@ -13,17 +13,19 @@ import org.xml.sax.helpers.DefaultHandler;
 import org.xml.sax.helpers.XMLReaderFactory;
 
 import com.foxinmy.umeng4j.ApiResult;
+import com.foxinmy.weixin4j.util.IOUtil;
+import com.foxinmy.weixin4j.util.StringUtil;
 
 /**
- * 接口调用错误获取
+ * 友盟接口调用错误获取
  * 
- * @className ErrorUtil
+ * @className UmengErrorUtil
  * @author jy
  * @date 2015年5月12日
  * @since JDK 1.7
  * @see
  */
-public final class ErrorUtil {
+public final class UmengErrorUtil {
 	private static byte[] errorXmlByteArray;
 	private final static Map<String, String> errorCacheMap;
 	static {

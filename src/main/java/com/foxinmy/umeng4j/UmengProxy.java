@@ -8,9 +8,8 @@ import com.foxinmy.umeng4j.cast.UmengCast;
 import com.foxinmy.umeng4j.exception.UmengException;
 import com.foxinmy.umeng4j.model.TaskStatus;
 import com.foxinmy.umeng4j.type.Consts;
-import com.foxinmy.umeng4j.util.ErrorUtil;
-import com.foxinmy.umeng4j.util.StringUtil;
 import com.foxinmy.umeng4j.util.Umeng4jConfigUtil;
+import com.foxinmy.umeng4j.util.UmengErrorUtil;
 import com.foxinmy.weixin4j.http.ContentType;
 import com.foxinmy.weixin4j.http.HttpClient;
 import com.foxinmy.weixin4j.http.HttpClientException;
@@ -20,6 +19,7 @@ import com.foxinmy.weixin4j.http.HttpResponse;
 import com.foxinmy.weixin4j.http.HttpStatus;
 import com.foxinmy.weixin4j.http.entity.StringEntity;
 import com.foxinmy.weixin4j.http.factory.HttpClientFactory;
+import com.foxinmy.weixin4j.util.DigestUtil;
 
 /**
  * 友盟消息接口实现
@@ -142,7 +142,7 @@ public class UmengProxy {
 	}
 
 	private JSONObject execute(String url, String body) throws UmengException {
-		String sign = StringUtil.getMD5(String.format("POST%s%s%s", url, body,
+		String sign = DigestUtil.MD5(String.format("POST%s%s%s", url, body,
 				masterSecret));
 		HttpRequest request = new HttpRequest(HttpMethod.POST, String.format(
 				"%s?sign=%s", url, sign));
@@ -157,7 +157,7 @@ public class UmengProxy {
 							com.foxinmy.umeng4j.type.Consts.SUCCESS)) {
 				String code = result.getJSONObject("data").getString(
 						"error_code");
-				throw new UmengException(code, ErrorUtil.getText(code));
+				throw new UmengException(code, UmengErrorUtil.getText(code));
 			}
 			return result;
 		} catch (HttpClientException e) {
