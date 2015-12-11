@@ -62,7 +62,7 @@ public class UmengProxy {
 	 * @see com.foxinmy.umeng4j.cast.CustomizedCast
 	 * @throws UmengException
 	 */
-	public ApiResult pushMsg(UmengCast umengCast) throws UmengException {
+	public ApiResult pushMessage(UmengCast umengCast) throws UmengException {
 		umengCast.setAppkey(appKey);
 
 		JSONObject response = execute(Consts.UMENG_MSG_PUSH_URL,

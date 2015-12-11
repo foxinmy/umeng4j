@@ -25,22 +25,25 @@ public class AndroidTest {
 	public void payloadNotification() {
 		AndroidPayload payload = new AndroidPayload("ticker", "title", "text");
 		payload.afterOpenActivity("activity").sound("sound")
-				.extar("key", "value");
+				.extra("key", "value");
 		System.err.println(payload.asContent());
 	}
 
 	@Test
 	public void unicastTest() throws UmengException {
-		String deviceToken = "AnWrbNeF55Z1Y589jX_SnJE7e_Qb4tmE7u_C38EAF6eX";
+		String deviceToken = "ArMnkxghq4EM3Kt-iirebwTk58ILUBfMaQ7ea3O84ETq";
 		AndroidPayload payload = new AndroidPayload("通知栏提示文字", "通知标题", "通知文字描述");
-		payload.afterOpenActivity("me.huijian.meeting.chat.ChatListActivity");
+		payload  = new AndroidPayload("测试数据");
+		//payload.afterOpenActivity("me.huijian.meeting.chat.ChatListActivity");
+		payload.afterOpenCustom();
+		payload.extra("json", "2");
 		Policy policy = new Policy();
 		UniCast uniCast = new UniCast(deviceToken, payload);
 		// policy.setStartTime(new Date());
 		uniCast.setPolicy(policy);
 		uniCast.setProductionMode(false);
 		//System.err.println(JSON.toJSONString(uniCast));
-		System.err.println(umengProxy.pushMsg(uniCast));
+		System.err.println(umengProxy.pushMessage(uniCast));
 	}
 	
 	@Test
@@ -52,6 +55,6 @@ public class AndroidTest {
 		cast.setPolicy(policy);
 		cast.setProductionMode(false);
 		//System.err.println(JSON.toJSONString(uniCast));
-		System.err.println(umengProxy.pushMsg(cast));
+		System.err.println(umengProxy.pushMessage(cast));
 	}
 }

@@ -5,13 +5,14 @@ import com.foxinmy.umeng4j.type.PayloadType;
 
 /**
  * 安卓消息提醒
+ * 
  * @className AndroidPayload
  * @author jy
  * @date 2015年1月30日
  * @since JDK 1.7
  * @see
  */
-public class AndroidPayload implements Payload{
+public class AndroidPayload implements Payload {
 
 	private JSONObject payloadContent;
 	private JSONObject payloadBody;
@@ -24,7 +25,7 @@ public class AndroidPayload implements Payload{
 	 *            用户自定义内容
 	 * @return
 	 */
-	public AndroidPayload(JSONObject custom) {
+	public AndroidPayload(Object custom) {
 		payloadContent = new JSONObject();
 		payloadBody = new JSONObject();
 		payloadExtar = new JSONObject();
@@ -198,7 +199,7 @@ public class AndroidPayload implements Payload{
 	 * @param value
 	 * @return
 	 */
-	public AndroidPayload extar(String key, String value) {
+	public AndroidPayload extra(String key, String value) {
 		payloadExtar.put(key, value);
 		return this;
 	}
@@ -222,7 +223,7 @@ public class AndroidPayload implements Payload{
 			afterOpenApp();
 		}
 		payloadContent.put("body", payloadBody);
-		payloadContent.put("extar", payloadExtar);
+		payloadContent.put("extra", payloadExtar);
 		return payloadContent;
 	}
 }
