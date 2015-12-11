@@ -1,5 +1,7 @@
 package com.foxinmy.umeng4j.payload;
 
+import java.util.Map;
+
 import com.alibaba.fastjson.JSONObject;
 
 /**
@@ -50,6 +52,11 @@ public class IOSPayload implements Payload {
 
 	public IOSPayload keyValue(String key, String value) {
 		payloadContent.put(key, value);
+		return this;
+	}
+
+	public IOSPayload keyValue(Map<String, Object> maps) {
+		payloadContent.putAll(maps);
 		return this;
 	}
 

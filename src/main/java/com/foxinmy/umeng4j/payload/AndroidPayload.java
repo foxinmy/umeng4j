@@ -212,7 +212,7 @@ public class AndroidPayload implements Payload {
 	 * @param extras
 	 * @return
 	 */
-	public AndroidPayload extra(Map<String, String> extras) {
+	public AndroidPayload extra(Map<String, Object> extras) {
 		payloadExtar.putAll(extras);
 		return this;
 	}
