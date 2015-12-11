@@ -1,5 +1,7 @@
 package com.foxinmy.umeng4j.payload;
 
+import java.util.Map;
+
 import com.alibaba.fastjson.JSONObject;
 import com.foxinmy.umeng4j.type.PayloadType;
 
@@ -201,6 +203,17 @@ public class AndroidPayload implements Payload {
 	 */
 	public AndroidPayload extra(String key, String value) {
 		payloadExtar.put(key, value);
+		return this;
+	}
+
+	/**
+	 * 可选 用户自定义扩展属性
+	 * 
+	 * @param extras
+	 * @return
+	 */
+	public AndroidPayload extra(Map<String, String> extras) {
+		payloadExtar.putAll(extras);
 		return this;
 	}
 
