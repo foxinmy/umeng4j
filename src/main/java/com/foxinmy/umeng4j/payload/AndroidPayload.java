@@ -201,7 +201,7 @@ public class AndroidPayload implements Payload {
 	 * @param value
 	 * @return
 	 */
-	public AndroidPayload extra(String key, String value) {
+	public AndroidPayload extra(String key, Object value) {
 		payloadExtar.put(key, value);
 		return this;
 	}
@@ -212,7 +212,7 @@ public class AndroidPayload implements Payload {
 	 * @param extras
 	 * @return
 	 */
-	public AndroidPayload extra(Map<String, Object> extras) {
+	public AndroidPayload extra(Map<? extends String, ? extends Object> extras) {
 		payloadExtar.putAll(extras);
 		return this;
 	}

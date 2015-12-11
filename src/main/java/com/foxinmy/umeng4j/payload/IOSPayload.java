@@ -50,12 +50,12 @@ public class IOSPayload implements Payload {
 		return this;
 	}
 
-	public IOSPayload keyValue(String key, String value) {
+	public IOSPayload keyValue(String key, Object value) {
 		payloadContent.put(key, value);
 		return this;
 	}
 
-	public IOSPayload keyValue(Map<String, Object> maps) {
+	public IOSPayload keyValue(Map<? extends String, ? extends Object> maps) {
 		payloadContent.putAll(maps);
 		return this;
 	}
