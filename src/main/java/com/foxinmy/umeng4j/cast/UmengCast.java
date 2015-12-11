@@ -13,7 +13,12 @@ import com.foxinmy.umeng4j.util.UmengStringUtil;
  * @author jy
  * @date 2015年1月30日
  * @since JDK 1.7
- * @see
+ * @see UniCast-单播
+ * @see ListCast-列播(要求不超过500个device_token)
+ * @see FileCast-文件播(多个device_token可通过文件形式批量发送
+ * @see BroaDcast-广播
+ * @see GroupCast-组播(按照filter条件筛选特定用户群, 具体请参照filter参数)
+ * @see Customizedcast(通过开发者自有的alias进行推送)
  */
 public abstract class UmengCast {
 
