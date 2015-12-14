@@ -43,7 +43,7 @@ umeng4j.properties说明
 2.实例化一个`UmengProxy`对象,调用API.
 
     UmengProxy umengProxy = new UmengProxy();
-    umengProxy.pushMg(umengcast);
+    umengProxy.pushMessage(umengcast);
     
 如何获取
 -------
@@ -52,7 +52,7 @@ umeng4j.properties说明
 	<dependency>
 	    <groupId>com.foxinmy</groupId>
 	    <artifactId>umeng4j</artifactId>
-	    <version>1.1.0</version>
+	    <version>1.1.1</version>
 	</dependency>
 	
 2.git clone & mvn package.
