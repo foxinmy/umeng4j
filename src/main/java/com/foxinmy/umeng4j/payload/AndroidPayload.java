@@ -21,23 +21,7 @@ public class AndroidPayload implements Payload {
 	private JSONObject payloadExtar;
 
 	/**
-	 * MESSAGE 类型
-	 * 
-	 * @param custom
-	 *            用户自定义内容
-	 * @return
-	 */
-	public AndroidPayload(Object custom) {
-		payloadContent = new JSONObject();
-		payloadBody = new JSONObject();
-		payloadExtar = new JSONObject();
-		payloadContent.put("display_type", PayloadType.MESSAGE.name()
-				.toLowerCase());
-		payloadBody.put("custom", custom);
-	}
-
-	/**
-	 * NOTIFICATION 类型
+	 * 默认 NOTIFICATION 类型
 	 * 
 	 * @param ticker
 	 *            通知栏提示文字
@@ -55,6 +39,18 @@ public class AndroidPayload implements Payload {
 		payloadBody.put("ticker", ticker);
 		payloadBody.put("title", title);
 		payloadBody.put("text", text);
+	}
+
+	/**
+	 * 消息类型
+	 * 
+	 * @param payloadType
+	 *            值可以为: notification-通知，message-消息
+	 * @return
+	 */
+	public AndroidPayload displayType(PayloadType payloadType) {
+		payloadContent.put("display_type", payloadType.name().toLowerCase());
+		return this;
 	}
 
 	/**
@@ -166,6 +162,20 @@ public class AndroidPayload implements Payload {
 	 */
 	public AndroidPayload afterOpenCustom() {
 		payloadBody.put("after_open", "go_custom");
+		return this;
+	}
+
+	/**
+	 * 可选 display_type=message, 或者 display_type=notification且
+	 * "after_open"为"go_custom"时
+	 * 
+	 * @param custom
+	 *            用户自定义内容, 可以为字符串或者JSON格式
+	 * @return
+	 */
+	public AndroidPayload afterOpenCustom(Object custom) {
+		payloadBody.put("after_open", "go_custom");
+		payloadBody.put("custom", custom);
 		return this;
 	}
 
