@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.foxinmy</groupId>
 	<artifactId>umeng4j</artifactId>
-	<version>1.1.1</version>
+	<version>1.1.2</version>
 	<packaging>jar</packaging>
 	<name>umeng4j</name>
 	<url>https://github.com/foxinmy/umeng4j</url>
@@ -205,7 +205,7 @@
 		<dependency>
 			<groupId>com.foxinmy</groupId>
 			<artifactId>weixin4j-base</artifactId>
-			<version>1.6.5</version>
+			<version>1.6.6</version>
 		</dependency>
 	</dependencies>
 	<profiles>
