@@ -4,7 +4,7 @@ package com.foxinmy.umeng4j.util;
  * 字符串工具类
  * 
  * @className UmengStringUtil
- * @author jy
+ * @author jinyu(foxinmy@gmail.com)
  * @date 2015年12月10日
  * @since JDK 1.7
  * @see

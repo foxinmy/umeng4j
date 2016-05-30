@@ -20,7 +20,7 @@ import com.foxinmy.weixin4j.util.StringUtil;
  * 友盟接口调用错误获取
  * 
  * @className UmengErrorUtil
- * @author jy
+ * @author jinyu(foxinmy@gmail.com)
  * @date 2015年5月12日
  * @since JDK 1.7
  * @see

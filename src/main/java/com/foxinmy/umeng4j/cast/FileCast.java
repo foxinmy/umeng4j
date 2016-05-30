@@ -8,7 +8,7 @@ import com.foxinmy.umeng4j.type.CastType;
  * 文件播
  * 
  * @className ListCast
- * @author jy
+ * @author jinyu(foxinmy@gmail.com)
  * @date 2015年1月30日
  * @since JDK 1.7
  * @see

@@ -8,7 +8,7 @@ import com.alibaba.fastjson.JSONObject;
  * 调用结果
  * 
  * @className ApiResult
- * @author jy
+ * @author jinyu(foxinmy@gmail.com)
  * @date 2015年1月30日
  * @since JDK 1.7
  * @see

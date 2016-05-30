@@ -9,7 +9,7 @@ import com.foxinmy.umeng4j.type.MessageStatus;
  * 任务状态
  * 
  * @className TaskStatus
- * @author jy
+ * @author jinyu(foxinmy@gmail.com)
  * @date 2015年1月31日
  * @since JDK 1.7
  * @see

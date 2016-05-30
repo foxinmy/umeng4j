@@ -8,7 +8,7 @@ import com.foxinmy.umeng4j.type.FilterType;
  * 过滤条件
  * 
  * @className FilterCriteria
- * @author jy
+ * @author jinyu(foxinmy@gmail.com)
  * @date 2015年1月31日
  * @since JDK 1.7
  * @see<a href="http://dev.umeng.com/push/android/api-doc#4_7">过滤条件示例</a>

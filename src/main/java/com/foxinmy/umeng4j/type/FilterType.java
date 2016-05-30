@@ -3,7 +3,7 @@ package com.foxinmy.umeng4j.type;
 /**
  * 筛选字段
  * @className FilterType
- * @author jy
+ * @author jinyu(foxinmy@gmail.com)
  * @date 2015年1月31日
  * @since JDK 1.7
  * @see

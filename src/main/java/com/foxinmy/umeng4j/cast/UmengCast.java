@@ -10,7 +10,7 @@ import com.foxinmy.umeng4j.util.UmengStringUtil;
  * 友盟消息
  * 
  * @className UmengCast
- * @author jy
+ * @author jinyu(foxinmy@gmail.com)
  * @date 2015年1月30日
  * @since JDK 1.7
  * @see UniCast-单播

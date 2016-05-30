@@ -4,7 +4,7 @@ package com.foxinmy.umeng4j.exception;
  * 调用接口抛出的异常
  * 
  * @className UmengException
- * @author jy.hu
+ * @author jinyu(foxinmy@gmail.com).hu
  * @date 2014年4月10日
  * @since JDK 1.7
  * @see

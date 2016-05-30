@@ -8,7 +8,7 @@ import com.alibaba.fastjson.JSONObject;
  * 苹果消息提醒
  * 
  * @className IOSPayload
- * @author jy
+ * @author jinyu(foxinmy@gmail.com)
  * @date 2015年1月30日
  * @since JDK 1.7
  * @see

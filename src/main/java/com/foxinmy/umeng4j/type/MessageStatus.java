@@ -4,7 +4,7 @@ package com.foxinmy.umeng4j.type;
  * 消息状态
  * 
  * @className MessageStatusType
- * @author jy
+ * @author jinyu(foxinmy@gmail.com)
  * @date 2015年1月31日
  * @since JDK 1.7
  * @see

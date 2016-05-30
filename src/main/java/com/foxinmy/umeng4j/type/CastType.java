@@ -4,7 +4,7 @@ package com.foxinmy.umeng4j.type;
  * 消息发送类型
  * 
  * @className CastType
- * @author jy
+ * @author jinyu(foxinmy@gmail.com)
  * @date 2015年1月30日
  * @since JDK 1.7
  * @see
